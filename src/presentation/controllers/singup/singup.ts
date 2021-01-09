@@ -1,7 +1,7 @@
 
-import { badRequest, ok, serverError } from '../helper/http-helper';
-import { InvalidParamError, MissingParamError } from '../errors';
-import { Controller, HttpRequest, HttpResponse } from '../protocols';
+import { badRequest, ok, serverError } from '../../helper/http-helper';
+import { InvalidParamError, MissingParamError } from '../../errors';
+import { Controller, HttpRequest, HttpResponse } from '../../protocols';
 import { EmailValidator } from './singup-protocols';
 import { AddAccount } from '../../../domain/usecases/add-account';
 
