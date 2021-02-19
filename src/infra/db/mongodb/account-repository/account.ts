@@ -3,7 +3,6 @@ import { AddAccountModel } from '../../../../domain/usecases/add-account';
 import { AddAccountRepository } from '../../../../data/protocols/add-account-repository';
 import { MongoHelper } from '../helpers/mongo-helpers';
 
-
 export class AccountMongoRepository implements AddAccountRepository {
 
     async add (accountData: AddAccountModel): Promise<AccountModel> {
