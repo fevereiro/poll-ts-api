@@ -81,6 +81,6 @@ describe('LogController Decorator', () => {
         const logSpy = jest.spyOn(logErrorRepositoryStub, 'log')
         jest.spyOn(controllerStub, 'handle').mockReturnValueOnce(new Promise(resolve => resolve(makeFakeServerError())))
         await sut.handle(makeFakeRequest())
-        expect(logSpy).toHaveBeenCalledWith('error_stack')
+        expect(logSpy).toHaveBeenCalledWith('any_stack')
     });
 });
