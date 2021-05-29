@@ -1,5 +1,5 @@
 
-import { badRequest, ok, serverError } from '../../helper/http-helper';
+import { badRequest, ok, serverError } from '../../helper/http/http-helper';
 import { Controller, HttpRequest, HttpResponse } from '../../protocols';
 import { Validation } from './singup-protocols';
 import { AddAccount } from '../../../domain/usecases/add-account';

@@ -1,4 +1,4 @@
-import { ok, badRequest, serverError } from './../../helper/http-helper';
+import { ok, badRequest, serverError } from '../../helper/http/http-helper';
 import { HttpRequest } from './../../protocols/http';
 import { MissingParamError, ServerError } from '../../errors';
 import { SignUpController } from './singup';
