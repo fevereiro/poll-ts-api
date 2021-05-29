@@ -1,13 +1,13 @@
-import { AccountModel, Encrypter, AddAccountModel, AddAccountRepository } from "./db-add-account-protocols"
+import { AccountModel, Hasher, AddAccountModel, AddAccountRepository } from "./db-add-account-protocols"
 import { DbAddAccount } from "./db-add-account"
 
-const makeEncrypter = (): Encrypter => {
-    class EncrypterStub implements Encrypter {
-        async encrypt (value: string): Promise<string> {
+const makeHasher = (): Hasher => {
+    class HasherStub implements Hasher {
+        async hash (value: string): Promise<string> {
             return new Promise(resolve => resolve('hashed_password'))
         }
     }
-    return new EncrypterStub()
+    return new HasherStub()
 }
 
 const makeAddAccountRepository = (): AddAccountRepository => {
@@ -34,25 +34,25 @@ const makeFakeAccountData = (): AddAccountModel => ({
 
 interface SutTypes {
     sut: DbAddAccount
-    encrypterStub: Encrypter
+    hasherStub: Hasher
     addAccountRepositoryStub: AddAccountRepository
 }
 
 const makeSut = (): SutTypes => {
-    const encrypterStub = makeEncrypter()
+    const hasherStub = makeHasher()
     const addAccountRepositoryStub = makeAddAccountRepository()
-    const sut = new DbAddAccount(encrypterStub, addAccountRepositoryStub)
+    const sut = new DbAddAccount(hasherStub, addAccountRepositoryStub)
     return {
         sut,
-        encrypterStub,
+        hasherStub: hasherStub,
         addAccountRepositoryStub
     }
 }
 
 describe('DbAddAccount Usecase', () => {
-    test('should call Encrypter with correct password ', async () => {
-        const { sut, encrypterStub } = makeSut()
-        const encryptSpy = jest.spyOn(encrypterStub, 'encrypt')
+    test('should call Hasher with correct password ', async () => {
+        const { sut, hasherStub: hasherStub } = makeSut()
+        const encryptSpy = jest.spyOn(hasherStub, 'hash')
         await sut.add(makeFakeAccountData())
         expect(encryptSpy).toHaveBeenLastCalledWith('valid_password')
     });
@@ -67,7 +67,6 @@ describe('DbAddAccount Usecase', () => {
             password: 'hashed_password'
         })
     })
-
 
     test('should return an account on success', async () => {
         const { sut } = makeSut()
