@@ -1,7 +1,6 @@
-import { UpdateAcessTokenRepository } from './../../../../data/protocols/db/update-access-token-repository';
 import { Collection } from "mongodb";
 import { MongoHelper } from "../helpers/mongo-helpers";
-import { AccountMongoRepository } from "./account";
+import { AccountMongoRepository } from "./account-mongo-repo";
 
 let accountCollection: Collection
 describe('Account Mongo Repository', () => {

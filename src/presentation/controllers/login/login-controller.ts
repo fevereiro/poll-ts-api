@@ -1,6 +1,6 @@
-import { Validation } from '../singup/singup-protocols';
+import { Validation } from '../singup/singup-controller-protocols';
 import { badRequest, ok, serverError, unauthorized } from '../../helper/http/http-helper';
-import { Controller, HttpRequest, HttpResponse, Authentication } from './login-protocols';
+import { Controller, HttpRequest, HttpResponse, Authentication } from './login-controller-protocols';
 
 export class LoginController implements Controller {
     private readonly authentication: Authentication

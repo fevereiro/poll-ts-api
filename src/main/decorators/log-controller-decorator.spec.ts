@@ -1,8 +1,9 @@
-import { AccountModel } from './../../domain/models/account';
-import { LogErrorRepository } from '../../data/protocols/log-error-repository';
+import { LogErrorRepository } from '../../data/protocols/db/log/log-error-repository';
+import { AccountModel } from '../../domain/models/account';
+
 import { ok, serverError } from '../../presentation/helper/http/http-helper';
 import { Controller, HttpRequest, HttpResponse } from '../../presentation/protocols';
-import { LogControllerDecorator } from './log';
+import { LogControllerDecorator } from './log-controller-decorator';
 
 interface SutTypes {
     sut: LogControllerDecorator,
@@ -59,7 +60,6 @@ const makeLogErrorRepository = (): LogErrorRepository => {
         }
     }
     return new LogErrorRepositoryStub()
-
 }
 
 describe('LogController Decorator', () => {

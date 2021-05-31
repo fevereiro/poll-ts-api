@@ -1,8 +1,8 @@
 import { ok, badRequest, serverError } from '../../helper/http/http-helper';
-import { HttpRequest } from './../../protocols/http';
+import { HttpRequest } from '../../protocols/http';
 import { MissingParamError, ServerError } from '../../errors';
-import { SignUpController } from './singup';
-import { AccountModel, AddAccount, AddAccountModel, EmailValidator, Validation } from './singup-protocols';
+import { SignUpController } from './singup-controller';
+import { AccountModel, AddAccount, AddAccountModel, EmailValidator, Validation } from './singup-controller-protocols';
 
 const makeAddAccount = (): AddAccount => {
     class AddAccountSub implements AddAccount {
