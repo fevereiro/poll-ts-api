@@ -16,8 +16,10 @@ services:
         command: npm start
         volumes:
             - ./dist:/user/src/poll-ts-api/dist
+            - ./package.json:/user/src/poll-ts-api/package.json
         ports:
             - "5050:5050"
+            - "9222:9222"
         links:
             - mongo
 
